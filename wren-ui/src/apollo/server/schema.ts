@@ -859,31 +859,6 @@ export const typeDefs = gql`
     detail: DashboardItemDetail!
   }
 
-  type SqlPair {
-    id: Int!
-    projectId: Int!
-    sql: String!
-    question: String!
-  }
-
-  input CreateSqlPairInput {
-    sql: String!
-    question: String!
-  }
-
-  input UpdateSqlPairInput {
-    sql: String
-    question: String
-  }
-
-  input SqlPairWhereUniqueInput {
-    id: Int!
-  }
-
-  input GenerateQuestionInput {
-    sql: String!
-  }
-
   # Query and Mutation
   type Query {
     # On Boarding Steps
@@ -926,9 +901,6 @@ export const typeDefs = gql`
 
     # Dashboard
     dashboardItems: [DashboardItem!]!
-
-    # SQL Pairs
-    sqlPairs: [SqlPair]!
   }
 
   type Mutation {
@@ -1039,14 +1011,5 @@ export const typeDefs = gql`
     createDashboardItem(data: CreateDashboardItemInput!): DashboardItem!
     deleteDashboardItem(where: DashboardItemWhereInput!): Boolean!
     previewItemSQL(data: PreviewItemSQLInput!): JSON!
-
-    # SQL Pairs
-    createSqlPair(data: CreateSqlPairInput!): SqlPair!
-    updateSqlPair(
-      where: SqlPairWhereUniqueInput!
-      data: UpdateSqlPairInput!
-    ): SqlPair!
-    deleteSqlPair(where: SqlPairWhereUniqueInput!): Boolean!
-    generateQuestion(data: GenerateQuestionInput!): String!
   }
 `;

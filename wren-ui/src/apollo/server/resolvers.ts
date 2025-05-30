@@ -5,7 +5,6 @@ import { AskingResolver } from './resolvers/askingResolver';
 import { DiagramResolver } from './resolvers/diagramResolver';
 import { LearningResolver } from './resolvers/learningResolver';
 import { DashboardResolver } from './resolvers/dashboardResolver';
-import { SqlPairResolver } from './resolvers/sqlPairResolver';
 import { convertColumnType } from '@server/utils';
 
 const projectResolver = new ProjectResolver();
@@ -14,7 +13,6 @@ const askingResolver = new AskingResolver();
 const diagramResolver = new DiagramResolver();
 const learningResolver = new LearningResolver();
 const dashboardResolver = new DashboardResolver();
-const sqlPairResolver = new SqlPairResolver();
 const resolvers = {
   JSON: GraphQLJSON,
   Query: {
@@ -57,9 +55,6 @@ const resolvers = {
 
     // Dashboard
     dashboardItems: dashboardResolver.getDashboardItems,
-
-    // SQL Pairs
-    sqlPairs: sqlPairResolver.getProjectSqlPairs,
   },
   Mutation: {
     deploy: modelResolver.deploy,
@@ -142,12 +137,6 @@ const resolvers = {
     createDashboardItem: dashboardResolver.createDashboardItem,
     deleteDashboardItem: dashboardResolver.deleteDashboardItem,
     previewItemSQL: dashboardResolver.previewItemSQL,
-
-    // SQL Pairs
-    createSqlPair: sqlPairResolver.createSqlPair,
-    updateSqlPair: sqlPairResolver.updateSqlPair,
-    deleteSqlPair: sqlPairResolver.deleteSqlPair,
-    generateQuestion: sqlPairResolver.generateQuestion,
   },
   ThreadResponse: askingResolver.getThreadResponseNestedResolver(),
   DetailStep: askingResolver.getDetailStepNestedResolver(),

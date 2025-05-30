@@ -15,7 +15,7 @@ export default function ViewBlock({ view, onClick }: Props) {
 
   if (isViewSaved) {
     return (
-      <div className="gray-6 text-medium">
+      <div className="mt-2 gray-6 text-medium">
         <FileDoneOutlined className="mr-2" />
         Generated from saved view{' '}
         <Link
@@ -32,7 +32,7 @@ export default function ViewBlock({ view, onClick }: Props) {
 
   return (
     <Button
-      className="gray-6"
+      className="mt-2 gray-6"
       type="text"
       size="small"
       icon={<SaveOutlined />}

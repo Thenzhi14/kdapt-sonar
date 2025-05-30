@@ -130,11 +130,6 @@ export type CreateSimpleMetricInput = {
   timeGrain: Array<TimeGrainInput>;
 };
 
-export type CreateSqlPairInput = {
-  question: Scalars['String'];
-  sql: Scalars['String'];
-};
-
 export type CreateThreadInput = {
   question?: InputMaybe<Scalars['String']>;
   sql?: InputMaybe<Scalars['String']>;
@@ -461,10 +456,6 @@ export type FieldInfo = {
   type?: Maybe<Scalars['String']>;
 };
 
-export type GenerateQuestionInput = {
-  sql: Scalars['String'];
-};
-
 export type GetMdlResult = {
   __typename?: 'GetMDLResult';
   hash: Scalars['String'];
@@ -528,7 +519,6 @@ export type Mutation = {
   createInstantRecommendedQuestions: Task;
   createModel: Scalars['JSON'];
   createRelation: Scalars['JSON'];
-  createSqlPair: SqlPair;
   createThread: Thread;
   createThreadResponse: ThreadResponse;
   createView: ViewInfo;
@@ -536,12 +526,10 @@ export type Mutation = {
   deleteDashboardItem: Scalars['Boolean'];
   deleteModel: Scalars['Boolean'];
   deleteRelation: Scalars['Boolean'];
-  deleteSqlPair: Scalars['Boolean'];
   deleteThread: Scalars['Boolean'];
   deleteView: Scalars['Boolean'];
   deploy: Scalars['JSON'];
   generateProjectRecommendationQuestions: Scalars['Boolean'];
-  generateQuestion: Scalars['String'];
   generateThreadRecommendationQuestions: Scalars['Boolean'];
   generateThreadResponseAnswer: ThreadResponse;
   generateThreadResponseBreakdown: ThreadResponse;
@@ -567,7 +555,6 @@ export type Mutation = {
   updateModel: Scalars['JSON'];
   updateModelMetadata: Scalars['Boolean'];
   updateRelation: Scalars['JSON'];
-  updateSqlPair: SqlPair;
   updateThread: Thread;
   updateViewMetadata: Scalars['Boolean'];
   validateCalculatedField: CalculatedFieldValidationResponse;
@@ -616,11 +603,6 @@ export type MutationCreateRelationArgs = {
 };
 
 
-export type MutationCreateSqlPairArgs = {
-  data: CreateSqlPairInput;
-};
-
-
 export type MutationCreateThreadArgs = {
   data: CreateThreadInput;
 };
@@ -657,11 +639,6 @@ export type MutationDeleteRelationArgs = {
 };
 
 
-export type MutationDeleteSqlPairArgs = {
-  where: SqlPairWhereUniqueInput;
-};
-
-
 export type MutationDeleteThreadArgs = {
   where: ThreadUniqueWhereInput;
 };
@@ -674,11 +651,6 @@ export type MutationDeleteViewArgs = {
 
 export type MutationDeployArgs = {
   force?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type MutationGenerateQuestionArgs = {
-  data: GenerateQuestionInput;
 };
 
 
@@ -801,12 +773,6 @@ export type MutationUpdateRelationArgs = {
 };
 
 
-export type MutationUpdateSqlPairArgs = {
-  data: UpdateSqlPairInput;
-  where: SqlPairWhereUniqueInput;
-};
-
-
 export type MutationUpdateThreadArgs = {
   data: UpdateThreadInput;
   where: ThreadUniqueWhereInput;
@@ -916,7 +882,6 @@ export type Query = {
   onboardingStatus: OnboardingStatusResponse;
   schemaChange: SchemaChange;
   settings: Settings;
-  sqlPairs: Array<Maybe<SqlPair>>;
   suggestedQuestions: SuggestedQuestionResponse;
   thread: DetailedThread;
   threadResponse: ThreadResponse;
@@ -1094,18 +1059,6 @@ export type SimpleMeasureInput = {
   type: Scalars['String'];
 };
 
-export type SqlPair = {
-  __typename?: 'SqlPair';
-  id: Scalars['Int'];
-  projectId: Scalars['Int'];
-  question: Scalars['String'];
-  sql: Scalars['String'];
-};
-
-export type SqlPairWhereUniqueInput = {
-  id: Scalars['Int'];
-};
-
 export type SuggestedQuestion = {
   __typename?: 'SuggestedQuestion';
   label: Scalars['String'];
@@ -1255,11 +1208,6 @@ export type UpdateRelationInput = {
 export type UpdateRelationshipMetadataInput = {
   description?: InputMaybe<Scalars['String']>;
   id: Scalars['Int'];
-};
-
-export type UpdateSqlPairInput = {
-  question?: InputMaybe<Scalars['String']>;
-  sql?: InputMaybe<Scalars['String']>;
 };
 
 export type UpdateThreadInput = {

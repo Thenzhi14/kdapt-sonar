@@ -76,25 +76,12 @@ export class TextBasedAnswerBackgroundTracker {
             project.id,
           );
           const mdl = deployment.manifest;
-          let data: PreviewDataResponse;
-          try {
-            data = (await this.queryService.preview(threadResponse.sql, {
-              project,
-              manifest: mdl,
-              modelingOnly: false,
-              limit: 500,
-            })) as PreviewDataResponse;
-          } catch (error) {
-            logger.error(`Error when query sql data: ${error}`);
-            await this.threadResponseRepository.updateOne(threadResponse.id, {
-              answerDetail: {
-                ...threadResponse.answerDetail,
-                status: ThreadResponseAnswerStatus.FAILED,
-                error: error?.extensions || error,
-              },
-            });
-            throw error;
-          }
+          const data = (await this.queryService.preview(threadResponse.sql, {
+            project,
+            manifest: mdl,
+            modelingOnly: false,
+            limit: 500,
+          })) as PreviewDataResponse;
 
           // request AI service
           const response = await this.wrenAIAdaptor.createTextBasedAnswer({

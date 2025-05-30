@@ -49,9 +49,8 @@ export default function Starter(props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          GitHub
+          {/* GitHub */}
         </Link>
-        .
       </Typography.Text>
       <Row className="mt-6" gutter={[16, 16]}>
         <DataSourceIterator
@@ -64,7 +63,7 @@ export default function Starter(props) {
       <div className="py-8" />
 
       <Typography.Title level={1} className="mb-3">
-        Play around with sample data
+        KDAPT with sample data
       </Typography.Title>
       <Row className="mt-6" gutter={[16, 16]}>
         <TemplatesIterator

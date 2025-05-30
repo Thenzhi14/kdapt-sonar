@@ -9,5 +9,4 @@ export enum MORE_ACTION {
   UPDATE_COLUMNS = 'update_columns',
   REFRESH = 'refresh',
   HIDE_CATEGORY = 'hide_category',
-  VIEW_SQL_PAIR = 'view_sql_pair',
 }

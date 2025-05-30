@@ -1,6 +1,5 @@
 import * as Errors from '@server/utils/error';
 import { Manifest } from '@server/mdl/type';
-import { ThreadResponse } from '../repositories';
 
 export interface WrenAIError {
   code: Errors.GeneralErrorCodes;
@@ -50,10 +49,10 @@ export interface AskStep {
 
 export interface AskHistory {
   sql: string;
-  question: string;
+  steps: Array<AskStep>;
 }
 
-export interface ProjectConfigurations {
+export interface AskConfigurations {
   language?: string;
   timezone?: { name: string };
 }
@@ -61,8 +60,8 @@ export interface ProjectConfigurations {
 export interface AskInput {
   query: string;
   deployId: string;
-  histories?: ThreadResponse[];
-  configurations?: ProjectConfigurations;
+  history?: AskHistory;
+  configurations?: AskConfigurations;
 }
 
 export interface AsyncQueryResponse {
@@ -103,7 +102,7 @@ export interface AskResponse<R, S> {
 export interface AskDetailInput {
   query: string;
   sql: string;
-  configurations?: ProjectConfigurations;
+  configurations?: AskConfigurations;
 }
 
 export type AskDetailResult = AskResponse<
@@ -144,7 +143,7 @@ export type RecommendationQuestionsInput = {
   maxCategories?: number;
   regenerate?: boolean; // Optional regenerate questions (default: false)
   // Optional configuration settings
-  configuration?: ProjectConfigurations;
+  configuration?: AskConfigurations;
 };
 
 export type RecommendationQuestion = {
@@ -167,7 +166,7 @@ export interface TextBasedAnswerInput {
   sqlData: any;
   threadId?: string;
   userId?: string;
-  configurations?: ProjectConfigurations;
+  configurations?: AskConfigurations;
 }
 
 export enum TextBasedAnswerStatus {
@@ -204,7 +203,7 @@ export interface ChartInput {
   query: string;
   sql: string;
   projectId?: string;
-  configurations?: ProjectConfigurations;
+  configurations?: AskConfigurations;
 }
 
 export interface ChartAdjustmentOption {
@@ -222,7 +221,7 @@ export interface ChartAdjustmentInput {
   adjustmentOption: ChartAdjustmentOption;
   chartSchema: Record<string, any>;
   projectId?: string;
-  configurations?: ProjectConfigurations;
+  configurations?: AskConfigurations;
 }
 
 export interface ChartResponse {
@@ -235,34 +234,4 @@ export interface ChartResult {
   status: ChartStatus;
   response?: ChartResponse;
   error?: WrenAIError;
-}
-
-export enum SqlPairStatus {
-  INDEXING = 'INDEXING',
-  FINISHED = 'FINISHED',
-  FAILED = 'FAILED',
-}
-
-export interface SqlPairResult {
-  status: SqlPairStatus;
-  error?: WrenAIError;
-}
-
-export interface QuestionInput {
-  sqls: string[];
-  projectId: number;
-  configurations?: ProjectConfigurations;
-}
-
-export enum QuestionsStatus {
-  GENERATING = 'GENERATING',
-  SUCCEEDED = 'SUCCEEDED',
-  FAILED = 'FAILED',
-}
-
-export interface QuestionsResult {
-  status: QuestionsStatus;
-  error?: WrenAIError;
-  questions?: string[];
-  trace_id?: string;
 }

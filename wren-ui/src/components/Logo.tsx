@@ -7,8 +7,8 @@ export const Logo = (props: Props) => {
   const { color = 'var(--gray-9)', size = 30 } = props;
   return (
     <svg
-      style={{ width: size, height: 'auto' }}
-      viewBox="0 0 30 30"
+      style={{ width: size, height: 'auto', display: 'none' }}
+      viewBox="0 0 31 31"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       shapeRendering="geometricPrecision"

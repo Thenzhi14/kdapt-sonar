@@ -60,8 +60,8 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Wren AI</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>KDAPT</title>
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <ApolloProvider client={apolloClient}>
         <PostHogProvider client={posthog}>
